@@ -4,29 +4,24 @@ import { Github, Linkedin, Mail, Phone, ExternalLink, Star, Code, ChevronDown, A
 export default function PremiumPortfolio() {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [scrollY, setScrollY] = useState(0);
-  const [hoveredProject, setHoveredProject] = useState(null);
+
 
   useEffect(() => {
-    const fetchRepos = async () => {
-      try {
-        const response = await fetch('https://api.github.com/users/abdulshakoor7/repos?sort=stars&per_page=20');
-        const data = await response.json();
-        if (Array.isArray(data)) {
-          const filtered = data.filter(repo => !repo.fork).slice(0, 9);
-          setRepos(filtered);
-        }
-        setLoading(false);
-      } catch (err) {
-        setLoading(false);
+  const fetchRepos = async () => {
+    try {
+      const response = await fetch('https://api.github.com/users/abdulshakoor7/repos?sort=stars&per_page=20');
+      const data = await response.json();
+      if (Array.isArray(data)) {
+        const filtered = data.filter(repo => !repo.fork).slice(0, 9);
+        setRepos(filtered);
       }
-    };
-    fetchRepos();
-
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+    }
+  };
+  fetchRepos();
+}, []);
 
   const getLanguageColor = (language) => {
     const colors = {
