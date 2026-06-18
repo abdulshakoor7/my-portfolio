@@ -138,14 +138,12 @@ export default function PremiumPortfolio() {
             <div className="grid md:grid-cols-3 gap-6">
               {repos.map((repo, i) => (
                 <a
-                  key={repo.id}
-                  href={repo.html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onMouseEnter={() => setHoveredProject(i)}
-                  onMouseLeave={() => setHoveredProject(null)}
-                  className="group relative h-96 rounded-2xl overflow-hidden cursor-pointer transform transition-all duration-300 hover:scale-105"
-                >
+                 key={repo.id}
+  href={repo.html_url}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group relative h-96 rounded-2xl overflow-hidden cursor-pointer transform transition-all duration-300 hover:scale-105"
+>
                   <div className={`absolute inset-0 bg-gradient-to-br ${getLanguageColor(repo.language)} opacity-10 group-hover:opacity-20 transition-opacity duration-300`}></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
                   <div className="absolute inset-0 border border-slate-700/50 group-hover:border-blue-500/50 rounded-2xl transition-colors duration-300"></div>
